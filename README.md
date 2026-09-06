@@ -1,16 +1,48 @@
-# React + Vite
+# Multi-LLM Chatbot — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React (Vite) chat interface that lets users converse with multiple open-source LLMs and switch between them from a dropdown, in real time.
 
-Currently, two official plugins are available:
+## Tech Stack
+- React (Vite) — UI framework and build tool
+- Vanilla CSS — styling
+- Fetch API — communication with the backend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- Real-time chat interface with distinct styling for user vs. AI messages
+- Model selector dropdown, dynamically populated from the backend's `/models` endpoint
+- Loading state ("Thinking...") while waiting for a response
+- Graceful error handling: displays clear messages for network failures, rate limits, or backend errors instead of breaking silently
+- Environment-based API URL configuration (switches automatically between local and deployed backend)
 
-## React Compiler
+## Setup & Run Locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Clone this repository:
+```bash
+   git clone https://github.com/ABHITANWAR26/chatbot-frontend.git
+   cd chatbot-frontend
+```
 
-## Expanding the ESLint configuration
+2. Install dependencies:
+```bash
+   npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Create a `.env` file in the root:
+VITE_API_URL=http://localhost:5000
+   (Change this to your deployed backend URL when testing against production.)
+
+4. Start the dev server:
+```bash
+   npm run dev
+```
+
+5. Open the URL shown in your terminal (typically `http://localhost:5173`).
+
+## Live Deployment
+- Frontend (Vercel): https://chatbot-frontend-sable-six.vercel.app
+- Backend (Render): https://chatbot-backend-aveo.onrender.com
+
+**Note:** the backend is on Render's free tier, which sleeps after inactivity. The first message after idle time may take 30–50 seconds while it wakes up.
+
+## Related Repository
+Backend code: https://github.com/ABHITANWAR26/chatbot-backend-
