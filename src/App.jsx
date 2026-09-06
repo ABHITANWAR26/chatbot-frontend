@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -10,7 +12,7 @@ function App() {
 
   // Runs once when the app first loads — fetch the list of available models
   useEffect(() => {
-    fetch('http://localhost:5000/models')
+    fetch(`${API_URL}/models`)
       .then((res) => res.json())
       .then((data) => {
         setModels(data);
@@ -32,7 +34,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/chat', {
+      const response = await fetch(`${API_URL}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
