@@ -51,8 +51,8 @@ body {
   max-width: 75%;
   line-height: 1.5;
   white-space: pre-wrap;
+  word-break: break-word;
 }
-
 .message.user {
   align-self: flex-end;
   background-color: #3B5BA5;
