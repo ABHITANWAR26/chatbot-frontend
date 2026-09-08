@@ -46,3 +46,13 @@ VITE_API_URL=http://localhost:5000
 
 ## Related Repository
 Backend code: https://github.com/ABHITANWAR26/chatbot-backend-
+
+## Architecture
+
+![Architecture diagram](./architecture.png)
+
+1. User types a message in the React frontend and selects a model
+2. Frontend sends a POST request to the Express backend's `/chat` endpoint
+3. Backend applies guardrails (rate limiting, input validation, system prompt), then calls OpenRouter
+4. OpenRouter routes the request to the selected open-source LLM
+5. The reply flows back through the same chain to the user
